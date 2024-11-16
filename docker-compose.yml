@@ -1,12 +1,27 @@
+#docker compose up -d --scale app=3 --build
 version: '3.4'
-
 services:
-  nginxloadbalancer:
-    image: nginxloadbalancer
+  app:
+    image: app
     build:
       context: .
       dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
+    networks:
+      - app-network
+    # ports:
+    #   - 3001:3000
+  nginx:
+    image: nginx
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
     ports:
       - 3000:3000
+    networks:
+      - app-network
+
+networks:
+  app-network:
