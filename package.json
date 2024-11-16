@@ -1,0 +1,16 @@
+{
+  "name": "nginx-loadbalancer",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Papanya",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "os": "^0.1.2"
+  }
+}
